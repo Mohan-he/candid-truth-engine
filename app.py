@@ -155,8 +155,11 @@ with st.sidebar:
     # type="password" hides what you are typing with dots
     admin_pass = st.text_input("Enter Password", type="password") 
     
-    # Change "candid123" to whatever secret password you want!
-    if admin_pass == "candid123": 
+    # FIX: Securely load the password from the .env file instead of hardcoding it
+    SECRET_PASSWORD = os.getenv("CREATOR_PASSWORD")
+    
+    # Check the typed password against the secure environment variable
+    if SECRET_PASSWORD and admin_pass == SECRET_PASSWORD: 
         st.success("Access Granted. Welcome Creator.")
         
         # Check if the file actually exists yet
@@ -171,6 +174,8 @@ with st.sidebar:
                 st.download_button('Download Database', f, file_name='candid_feedback.csv')
         else:
             st.info("No feedback has been submitted yet.")
+    elif admin_pass != "":
+        st.error("Incorrect Password.")
 
 
 # --- MAIN PAGE CONTENT ---
