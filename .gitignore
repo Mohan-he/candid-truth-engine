@@ -1,3 +1,14 @@
+# Security Secrets
+.env
+
+# User Database
+feedback_database.csv
+*.csv
+
+# Python Cache Files
+__pycache__/
+*.pyc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
