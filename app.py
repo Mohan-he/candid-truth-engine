@@ -4,7 +4,7 @@ import google.generativeai as genai
 import re # We are importing 're' (Regular Expressions) to clean HTML
 
 # 1. Setup the AI Brain
-genai.configure(api_key=st.secrets["AIzaSyDs-3RTFn5ieqqjJS2Lu7sYUW20nomVi90"])
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 # 2. Helper tool to strip invisible HTML code from the comments
