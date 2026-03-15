@@ -1,11 +1,15 @@
 import streamlit as st
 import requests
 import google.generativeai as genai
-import re # We are importing 're' (Regular Expressions) to clean HTML
+import re
+import os
 
 # 1. Setup the AI Brain
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+
+API_KEY = os.environ.get("GEMINI_API_KEY")
+genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-2.5-flash')
+
 
 # 2. Helper tool to strip invisible HTML code from the comments
 def clean_html(raw_html):
